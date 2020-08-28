@@ -141,9 +141,9 @@ namespace GameServer {
                 byte[] packetBytes = packet.ReadBytes(packetLength);
 
                 ThreadManager.ExecuteOnMainThread(() => {
-                    using (Packet packet = new Packet(packetBytes)) {
-                        int packetId = packet.ReadInt();
-                        Server.packetHandlers[packetId](id, packet);
+                    using (Packet sendPacket = new Packet(packetBytes)) {
+                        int packetId = sendPacket.ReadInt();
+                        Server.packetHandlers[packetId](id, sendPacket);
                     }
                 });
             }
