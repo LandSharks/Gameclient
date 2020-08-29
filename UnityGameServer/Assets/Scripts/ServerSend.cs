@@ -58,6 +58,12 @@ public class ServerSend
             SendTCPData(toClient, packet);
         }
     }
+    public static void PlayerDisconnected(int id) {
+        using(Packet packet = new Packet((int)ServerPackets.removePlayer)) {
+            packet.Write(id);
+            SendTCPDataToAll(packet);
+        }
+    }
     public static void PlayerPosition(Player player) {
         using(Packet packet = new Packet((int)ServerPackets.playerPostition)) {
             packet.Write(player.id);

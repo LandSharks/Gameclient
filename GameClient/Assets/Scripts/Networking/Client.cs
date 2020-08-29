@@ -56,7 +56,8 @@ namespace Networking {
                 { (int)ServerPackets.welcome, ClientHandle.Welcome },
                 { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
                 { (int)ServerPackets.playerPostition, ClientHandle.PlayerPosition },
-                { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation }
+                { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
+                { (int)ServerPackets.removePlayer, ClientHandle.RemovePlayer }
             };
             Debug.Log("Initialized packets.");
         }

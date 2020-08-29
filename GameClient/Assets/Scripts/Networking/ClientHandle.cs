@@ -29,12 +29,17 @@ namespace Networking {
 
             GameManager.players[id].transform.position = position;
         }
-
         public static void PlayerRotation(Packet packet) {
             int id = packet.ReadInt();
             Quaternion rotation = packet.ReadQuaternion();
 
             GameManager.players[id].transform.rotation = rotation;
+        }
+        public static void RemovePlayer(Packet packet) {
+            int id = packet.ReadInt();
+            ThreadManager.ExecuteOnMainThread(() => {
+                Destroy(GameManager.players[id].gameObject);
+            });
         }
     }
 }

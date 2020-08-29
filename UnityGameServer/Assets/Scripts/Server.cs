@@ -33,6 +33,11 @@ public class Server
         Debug.Log($"Server started on port: {Port}");
     }
 
+    public static void Stop() {
+        tcpListener.Stop();
+        udpListener.Close();
+    }
+
     private static void TCPConnectCallback(IAsyncResult result) {
         TcpClient client = tcpListener.EndAcceptTcpClient(result);
         tcpListener.BeginAcceptTcpClient(new AsyncCallback(TCPConnectCallback), null);
